@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.yousef.samplerestaurantlocation.ui.splashFragment.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash"
+        app:enterAnim="@anim/slide_in_left"
+        app:exitAnim="@anim/slide_out_right"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right">
+        <action
+            android:id="@+id/action_splashFragment_to_mapFragment"
+            app:destination="@id/mapFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mapFragment"
+        android:name="com.yousef.samplerestaurantlocation.ui.mapFragment.MapFragment"
+        android:label="fragment_map"
+        tools:layout="@layout/fragment_map"
+        app:enterAnim="@anim/slide_in_left"
+        app:exitAnim="@anim/slide_out_right"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right">
+    <action
+        android:id="@+id/action_mapFragment_to_detailFragment"
+        app:destination="@id/detailFragment" >
+
+        <argument
+            android:name="restaurantId"
+            app:argType="string" />
+    </action>
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.yousef.samplerestaurantlocation.ui.detailFragment.DetailFragment"
+        android:label="DetailFragment"
+        tools:layout="@layout/fragment_detail"
+        app:enterAnim="@anim/slide_in_left"
+        app:exitAnim="@anim/slide_out_right"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right">
+        <argument
+            android:name="restaurantId"
+            app:argType="string" />
+    </fragment>
+</navigation>

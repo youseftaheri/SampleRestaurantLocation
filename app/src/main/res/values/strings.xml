@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">SampleRestaurantLocation</string>
+    <string name="ok">OK</string>
+    <string name="app_email">WWW.SAMPLEAPP.COM</string>
+    <string name="internetError">Please check your internet connection</string>
+    <string name="my_location">My Location</string>
+    <string name="details">details</string>
+    <string name="location">Location:</string>
+    <string name="address">Address:</string>
+    <string name="distance">Distance:</string>
+    <string name="phone">Phone:</string>
+    <string name="facebook">Facebook:</string>
+    <string name="twitter">Twitter:</string>
+
+</resources>

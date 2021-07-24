@@ -1,0 +1,215 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-parcelize'
+    id 'kotlin-kapt'
+    id 'com.google.gms.google-services'
+    id 'androidx.navigation.safeargs'
+    id 'com.google.firebase.crashlytics'
+}
+
+android {
+    compileSdkVersion 30
+
+    defaultConfig {
+        applicationId "com.yousef.samplerestaurantlocation"
+        minSdkVersion 23
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+        vectorDrawables.useSupportLibrary = true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    allprojects {
+        repositories {
+            google()
+            maven { url "https://jitpack.io" }
+        }
+    }
+    packagingOptions {
+        exclude 'LICENSE.txt'
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+
+    buildFeatures {
+        dataBinding = true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+}
+
+kapt {
+    generateStubs = true
+}
+
+ext {
+    supportVersion = "30.0.0"
+    retrofitVersion = "2.9.0"
+    playservicesVersion = "16.1.0"
+    glideVersion = "4.11.0"
+    butterknifeVersion = "10.2.1"
+    okhttpVersion = "3.12.1"
+    lottieVersion = "2.5.6"
+    multidexVersion = "2.0.1"
+    rxJavaVersion = "2.2.9"
+    rxAndroidVersion = "2.0.2"
+    lifecycleVersion = "2.1.0"
+    daggerVersion = "2.16"
+    nav_version = "2.3.5"
+}
+
+dependencies {
+
+    implementation "androidx.core:core-ktx:1.6.0"
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.5.21"
+    implementation 'androidx.appcompat:appcompat:1.3.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'com.google.android.gms:play-services-maps:17.0.1'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.0'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.3.0'
+    testImplementation 'junit:junit:4.13.1'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation 'com.google.android.material:material:1.4.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.media:media:1.3.1'
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
+    implementation 'androidx.cardview:cardview:1.0.0'
+
+    //Coroutines Testing
+    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.9'
+
+    // jupiter
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.2.0'
+
+    // Android runner and rules support
+    androidTestImplementation 'androidx.test:runner:1.3.0'
+    androidTestImplementation 'androidx.test:rules:1.3.0'
+
+    // add this for intent mocking support
+    androidTestImplementation 'androidx.test.espresso:espresso-intents:3.3.0'
+
+    // add this for webview testing support
+    androidTestImplementation 'androidx.test.espresso:espresso-web:3.3.0'
+
+    // dependencies for local unit tests
+    testImplementation 'org.mockito:mockito-core:3.8.0'
+    testAnnotationProcessor 'com.google.dagger:dagger-compiler:2.27'
+    testImplementation "org.mockito.kotlin:mockito-kotlin:3.1.0"
+
+    // UI Testing
+    androidTestImplementation 'org.mockito:mockito-core:3.8.0'
+    androidTestAnnotationProcessor 'com.google.dagger:dagger-compiler:2.27'
+    testImplementation "androidx.arch.core:core-testing:2.1.0"
+
+    //Multidex
+    implementation 'androidx.multidex:multidex:2.0.1'
+
+    //Glide
+    implementation "com.github.bumptech.glide:glide:$glideVersion"
+    annotationProcessor "com.github.bumptech.glide:compiler:$glideVersion"
+    implementation "com.github.bumptech.glide:annotations:$glideVersion"
+    implementation('com.github.bumptech.glide:okhttp3-integration:4.0.0') {
+        exclude group: 'glide-parent'
+    }
+    annotationProcessor "com.github.bumptech.glide:compiler:$glideVersion"
+
+    //Calligraphy
+    implementation 'io.github.inflationx:calligraphy3:3.1.1'
+    implementation 'io.github.inflationx:viewpump:2.0.3'
+
+    //Crash Report Lib
+    implementation 'cat.ereza:customactivityoncrash:2.2.0'
+
+    //Sdp
+    implementation 'com.intuit.sdp:sdp-android:1.0.6'
+
+    //Event Bus
+    implementation 'org.greenrobot:eventbus:3.1.1'
+
+    //Lottie
+    implementation 'com.airbnb.android:lottie:3.4.1'
+
+    //Image zoom lib
+    implementation 'com.github.chrisbanes:PhotoView:2.0.0'
+
+    //firebase
+    implementation platform('com.google.firebase:firebase-bom:26.2.0')
+    implementation 'com.google.firebase:firebase-crashlytics-ktx'
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+//    implementation 'com.google.firebase:firebase-inappmessaging-display-ktx'
+
+    implementation 'com.google.firebase:firebase-core:19.0.0'
+    implementation "com.google.android.gms:play-services-gcm:17.0.0"
+    implementation "com.google.android.gms:play-services-auth:19.0.0"
+    implementation 'com.google.android.gms:play-services-auth-api-phone:17.5.1'
+    implementation 'com.google.android.gms:play-services-analytics:17.0.0'
+    implementation 'com.google.android.gms:play-services-location:18.0.0'
+
+    /* Retrofit using RxJava2, Okhttp, Okhttp logging interceptor, Gson  */
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttpVersion"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
+
+    implementation "com.google.code.gson:gson:2.8.7"
+
+    // RxJava / RxAndroid
+    implementation "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
+    implementation "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion"
+
+    // Android ViewModel
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion"
+    annotationProcessor "androidx.lifecycle:lifecycle-common-java8:$lifecycleVersion"
+
+    // dependency injection
+    implementation "com.google.dagger:dagger:$daggerVersion"
+    //noinspection OutdatedLibrary
+    implementation "com.google.dagger:dagger-android:$daggerVersion"
+    implementation "com.google.dagger:dagger-android-support:$daggerVersion"
+    kapt "com.google.dagger:dagger-compiler:$daggerVersion"
+    kapt "com.google.dagger:dagger-android-processor:$daggerVersion"
+    annotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
+    annotationProcessor "com.google.dagger:dagger-android-processor:$daggerVersion"
+    compileOnly 'javax.annotation:jsr250-api:1.0'
+    implementation 'javax.inject:javax.inject:1'
+
+    //FileUtils
+    implementation 'org.apache.commons:commons-io:1.3.2'
+
+    //dexter permissions
+    implementation "com.karumi:dexter:5.0.0"
+
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.1"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.1"
+
+    // database
+    implementation "androidx.room:room-runtime:2.3.0"
+    kapt "androidx.room:room-compiler:2.3.0"
+    implementation "androidx.room:room-ktx:2.3.0"
+
+    //Navigation Components
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+}
